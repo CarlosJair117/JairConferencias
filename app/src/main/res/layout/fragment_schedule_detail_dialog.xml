@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
@@ -43,7 +43,8 @@
                         android:textColor="#FFFFFF"
                         android:textSize="30sp"
                         android:gravity="center_horizontal"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:layout_centerInParent="true"/>
                 </RelativeLayout>
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
@@ -57,9 +58,36 @@
                             android:id="@+id/confHour"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Titulo de la conferencia"
-                            android:textColor="#FFFFFF"
-                            android:textSize="30sp"
+                            android:text="00:00"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="15sp"
+                            android:gravity="center_horizontal"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/confSpeaker"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nombre del expositor"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="25sp"
+                            android:gravity="center_horizontal"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/confTag"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Tag"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="12sp"
+                            android:gravity="center_horizontal"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/confDetalle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Detalle de la conferencia"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="15sp"
                             android:gravity="center_horizontal"
                             android:textStyle="bold" />
 
@@ -70,4 +98,4 @@
         </ScrollView>
     </FrameLayout>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</FrameLayout>
