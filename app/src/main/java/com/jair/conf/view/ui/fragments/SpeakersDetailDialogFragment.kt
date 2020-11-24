@@ -1,4 +1,4 @@
-package com.jair.conf.ui.fragments
+package com.jair.conf.view.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -1,9 +1,9 @@
-package com.jair.conf
+package com.jair.conf.view.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.telecom.Conference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.jair.conf.R
 import com.jair.conf.model.Speaker
 import com.jair.conf.model.conference
 import org.json.JSONArray

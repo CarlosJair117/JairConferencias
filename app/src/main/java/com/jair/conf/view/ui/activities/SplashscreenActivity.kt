@@ -1,4 +1,4 @@
-package com.jair.conf.ui.activities
+package com.jair.conf.view.ui.activities
 
 import android.os.Bundle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
