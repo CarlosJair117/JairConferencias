@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class ScheduleAdapter(val scheduleListener: ScheduleListener): RecyclerView.Adapter<ScheduleAdapter.ViewHolder>() {
+open class ScheduleAdapter(val scheduleListener: ScheduleListener): RecyclerView.Adapter<ScheduleAdapter.ViewHolder>() {
 
     var listConference = ArrayList<conference>()
 
@@ -55,4 +55,5 @@ class ScheduleAdapter(val scheduleListener: ScheduleListener): RecyclerView.Adap
         val tvConferenceAMPM = itemView.findViewById<TextView>(R.id.tvItemScheduleAMPM)
     }
 
+    open fun onConferenceClicked(conference: conference, position: Int) {}
 }

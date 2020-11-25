@@ -1,11 +1,20 @@
 package com.jair.conf.view.ui.fragments
 
 import android.os.Bundle
+import android.telecom.Conference
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.jair.conf.R
+import com.jair.conf.model.conference
+import com.jair.conf.view.adapter.ScheduleAdapter
+import com.jair.conf.view.adapter.ScheduleListener
+import com.jair.conf.viewmodel.ScheduleViewModel
+import kotlinx.android.synthetic.main.fragment_schedule.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +30,8 @@ class ScheduleFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private lateinit var scheduleAdapter: ScheduleAdapter
+    private lateinit var viewModel: ScheduleViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +48,29 @@ class ScheduleFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_schedule, container, false)
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel = ViewModelProviders.of(this).get(ScheduleViewModel::class.java)
+        viewModel.refresh()
+
+
+
+        rvSchedule.apply {
+            layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)
+            adapter = scheduleAdapter
+        }
+        observeViewModel()
+    }
+
+    fun observeViewModel(){
+        viewModel.listSchedule.observe(this, Observer<List<conference>> { schedule ->
+            scheduleAdapter.updateData(schedule)
+        })
+    }
+
+
 
     companion object {
         /**

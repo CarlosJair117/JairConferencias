@@ -1,12 +1,13 @@
 package com.jair.conf.viewmodel
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.jair.conf.model.Speaker
 import com.jair.conf.network.Callback
 import com.jair.conf.network.FirestoreService
 import java.lang.Exception
 
-class SpeakersViewModel {
+class SpeakersViewModel: ViewModel() {
     val firestoreService = FirestoreService()
     val listSpeakers: MutableLiveData<List<Speaker>> = MutableLiveData()
     var isLoading = MutableLiveData<Boolean>()
