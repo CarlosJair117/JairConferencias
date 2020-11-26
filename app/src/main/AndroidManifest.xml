@@ -17,13 +17,15 @@
         <activity
             android:name="com.jair.conf.view.ui.activities.SplashscreenActivity"
             android:label="@string/title_activity_splashscreen"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".view.ui.activities.MainActivity">
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".view.ui.activities.MainActivity">
+
         </activity>
     </application>
 
