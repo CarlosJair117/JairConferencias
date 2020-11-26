@@ -9,6 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDCxHW_6D_rNELzPOBPZKQ5T1yHZnd2wmQ"/>
+
         <activity
             android:name="com.jair.conf.view.ui.activities.SplashscreenActivity"
             android:label="@string/title_activity_splashscreen"

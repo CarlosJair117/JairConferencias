@@ -5,8 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.MarkerOptions
+import com.google.type.LatLng
 import com.jair.conf.R
-
+import com.jair.conf.model.Ubication
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
@@ -17,7 +23,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [UbicationFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class UbicationFragment : Fragment() {
+class UbicationFragment : Fragment(), OnMapReadyCallback {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -38,6 +44,13 @@ class UbicationFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_ubication, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val mapFragment = childFragmentManager.findFragmentById(R.id.navMapFragment) as SupportMapFragment
+
+        mapFragment.getMapAsync(this)
+    }
+
     companion object {
         /**
          * Use this factory method to create a new instance of
@@ -56,5 +69,21 @@ class UbicationFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onMapReady(googleMap: GoogleMap?) {
+        val ubication = Ubication()
+
+        val zoom = 16f
+        val centerMap = com.google.android.gms.maps.model.LatLng(ubication.latitude, ubication.longitude)
+
+        googleMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(centerMap,zoom))
+
+        val centerMark = com.google.android.gms.maps.model.LatLng(ubication.latitude, ubication.longitude)
+        val markerOptions = MarkerOptions()
+        markerOptions.position(centerMark)
+        markerOptions.title("Jair conf")
+
+
     }
 }
