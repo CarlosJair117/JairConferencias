@@ -5,10 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.MapStyleOptions
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.type.LatLng
 import com.jair.conf.R
@@ -23,7 +26,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [UbicationFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class UbicationFragment : Fragment(), OnMapReadyCallback {
+class UbicationFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -84,6 +87,11 @@ class UbicationFragment : Fragment(), OnMapReadyCallback {
         markerOptions.position(centerMark)
         markerOptions.title("Jair conf")
 
+        googleMap?.setMapStyle(MapStyleOptions.loadRawResourceStyle(context, R.raw.custom_map))
+    }
 
+    override fun onMarkerClick(p0: Marker?): Boolean {
+        findNavController().navigate(R.id.ubicationDetailFragmentDialog)
+        return true
     }
 }
